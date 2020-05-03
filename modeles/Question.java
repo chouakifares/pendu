@@ -1,5 +1,8 @@
 package com.usthb.modeles;
-public class Question {
+
+import java.io.Serializable;
+
+public class Question implements Serializable {
 	protected static int nb=1; 
 	protected int id,lvl;
 	protected String question,number,answer,img;
