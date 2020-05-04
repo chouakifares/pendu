@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -41,6 +42,11 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 	private List<JPanel> panels=new ArrayList();
 	Color transparent=new Color(0,0,0,0);
 	Dimension dateDimension=new Dimension(100,30);
+	public static int age(Date d) {
+		LocalDate rn=java.time.LocalDate.now();
+		if((rn.getMonthValue()>d.getMonth())||(rn.getMonthValue()==d.getMonth() && rn.getDayOfMonth()>=d.getDay())) return (rn.getYear()-d.getYear());
+		else return (rn.getYear()-d.getYear()-1);
+	}
 	public SignIn() {
 		super(400,500,"Sign In");
 		for(int i=1;i<32;i++) {
@@ -135,7 +141,10 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 			//cheking if a profile with the same username doesn't already exist
 			else {
 				if(Eureka.getPlayer(username)==null) {
-					Eureka.addPlayer(new Player(username,nom,prenom,psw,t));
+					if(age(t)>=18)
+						Eureka.addPlayer(new Player(username,nom,prenom,psw,t));
+					else
+						Eureka.addPlayer(new Player(username,nom,prenom,psw,t));
 					dispose();
 					new Login();
 				}
