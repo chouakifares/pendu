@@ -1,6 +1,8 @@
 package com.usthb.modeles;
 
-public class PlayedGame {
+import java.io.Serializable;
+
+public class PlayedGame implements Serializable {
 	protected float score;
 	protected int nbAnswered,wrongAnswers;
 	protected ThemeJeu theme;

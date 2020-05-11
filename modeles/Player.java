@@ -1,14 +1,15 @@
 package com.usthb.modeles;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Player implements Serializable{
-	private static int nb=0;
-	private int id,lastLevel;
-	private String username,firstName,lastName,password;
-	private Date birthday;
-	private List<PlayedGame> played;
+public abstract class Player implements Serializable{
+	protected static int nb=0;
+	protected int id,lastLevel;
+	protected String username,firstName,lastName,password;
+	protected Date birthday;
+	protected List<PlayedGame> played;
 	public Player(){}
 	public Player(String username ,String firstName, String lastName, String password,Date birthday)
 	{
@@ -37,6 +38,9 @@ public class Player implements Serializable{
 	public String getCorrectPassword() {
 		return password;
 	}
+	public List<PlayedGame> getHistory() {
+		return played;
+	}
 	//setters
 	public void setPassword(String password) {
 		this.password=password;
@@ -48,9 +52,6 @@ public class Player implements Serializable{
 	public void addPlay(PlayedGame p)
 	{
 		this.played.add(p);
-	}
-	public List<PlayedGame> getHistory() {
-		return played;
 	}
 	public PlayedGame getLastPlayedGame() {
 		//here we remove the last played game because it will be reentered during the end of the game or just after the userPage cade that uses it finishes with it  
@@ -64,5 +65,6 @@ public class Player implements Serializable{
 		}
 		return g;
 	}
+	public abstract ArrayList<? extends Question> getQuestions(String theme);
 }
 

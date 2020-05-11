@@ -1,17 +1,16 @@
 package com.usthb.modeles;
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ThemeJeu {
+public class ThemeJeu implements Serializable {
 	protected Categories type;
 	protected int id;
 	protected float coeff;
@@ -98,7 +97,7 @@ public class ThemeJeu {
 			}
 		}
 	}
-	//getters
+	//setters
 	public void setType(Categories type) {
 		this.type=type;
 	}
@@ -108,7 +107,7 @@ public class ThemeJeu {
 	public void setCoeff(float f) {
 		this.coeff=f;
 	}
-	// setters
+	// getters
 	public Categories getType() {
 		return type;
 	}
@@ -126,6 +125,24 @@ public class ThemeJeu {
 	public Question getQuestion(int index) {
 		return this.questions.get(index);
 	}
+	public List<Question> getQuestionSet() {
+		return this.questions;
+	}
+	public ArrayList<QuestionAdulte> getAdultQuestionSet(){
+		ArrayList<QuestionAdulte> questions=new ArrayList<QuestionAdulte>();
+		for(Question q:this.questions) {
+			if((q.getClass()).getSimpleName().equals("QuestionAdulte")) questions.add((QuestionAdulte)q);
+		}
+		return questions;
+	}
+	public ArrayList<QuestionEnfant> getChildrenQuestionSet(){
+		ArrayList<QuestionEnfant> questions=new ArrayList<QuestionEnfant>();
+		for(Question q:this.questions) {
+			if((q.getClass()).getSimpleName().equals("QuestionEnfant")) questions.add((QuestionEnfant)q);
+		}
+		return questions;
+	}
+
 	public int getNbQuestion() {
 		return questions.size();
 	}
