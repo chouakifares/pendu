@@ -1,4 +1,4 @@
-package com.usthb.dessin;
+package com.usthb.dessin.fenetre;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -7,7 +7,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import com.usthb.modeles.*;
+
+import com.usthb.dessin.Button;
+import com.usthb.dessin.Fond;
+import com.usthb.modeles.Categories;
+import com.usthb.modeles.Eureka;
+import com.usthb.modeles.PlayedGame;
+import com.usthb.modeles.Player;
+import com.usthb.modeles.ThemeJeu;
 public class UserPage extends Fenetre implements ActionListener{
 	Fond content=new Fond(new FlowLayout(1,10,20));
 	JLabel bienvenu=new JLabel("Hey ");
@@ -23,7 +30,7 @@ public class UserPage extends Fenetre implements ActionListener{
 	public UserPage(Player p) {
 		super("User Page");
 		this.p=p;
-		Font f=new Font("arial",Font.PLAIN,20);
+		Font f=new Font(Eureka.getFontName(),Font.PLAIN,28);
 		Dimension dimension=new Dimension(360,50);
 		bienvenu.setText(bienvenu.getText()+p.getUsername());
 		bienvenu.setHorizontalAlignment(JLabel.CENTER);
@@ -51,13 +58,17 @@ public class UserPage extends Fenetre implements ActionListener{
 			dispose();
 			new FenetreSelection(p);
 		}
+		else if(e.getSource()==profil) {
+			dispose();
+			new Profil(p);
+		}
 		else if(e.getSource()==deconnexion) {
 			dispose();
 			new Login();
 		}
 		else if(e.getSource()==continuer) {
 			dispose();
-			new GameLog(p.getLastPlayedGame(),p);
+			new GameWindow(p.getLastPlayedGame(),p);
 		}
 	}
 }

@@ -7,15 +7,17 @@ import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.usthb.modeles.Eureka;
+
 public class Potence extends JPanel {
 	int state;
 	protected JLabel remaining=new JLabel();
 	Potence(){}
-	Potence(int state){
+	public Potence(int state){
 		remaining.setText("Il vous reste "+(8- state)+" coup a jouer");
 		this.state=state;
 		this.setPreferredSize(new Dimension(380,320));
-		remaining.setFont(new Font("arial",Font.PLAIN,18));
+		remaining.setFont(new Font(Eureka.getFontName(),Font.PLAIN,26));
 		remaining.setBackground(new Color(0,0,0,0));
 		this.add(remaining);
 	}

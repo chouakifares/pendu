@@ -1,4 +1,4 @@
-package com.usthb.dessin;
+package com.usthb.dessin.fenetre;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,36 +17,42 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.usthb.dessin.Button;
+import com.usthb.dessin.Fond;
+import com.usthb.modeles.Eureka;
+
 public class HomePage extends Fenetre implements ActionListener{
 	private Button login=new Button("Log in");
 	private Button signin=new Button("Sign in");
+	private JButton stats=new JButton("Statistiques");
 	private JPanel choice=new JPanel(new FlowLayout(1,50,30));
 	private Fond content=new Fond(new BorderLayout(),true);
-	private JPanel info=new JPanel(new FlowLayout(1,130,10));
+	private JPanel info=new JPanel(new FlowLayout(1,40,10));
 	private static Color transparent=new Color(0,0,0,0);
 	private JButton rules=new JButton(""),about=new JButton("");
 	public HomePage() {
 		super("Home Page");
 		try {
-			Font f=new Font("arial",Font.PLAIN,2);
+			
 			rules.addActionListener(this);
 			rules.setIcon(new ImageIcon(ImageIO.read(new File("images/icons/rules.png"))));
-			rules.setFont(f);
-			about.setFont(f);
 			about.addActionListener(this);
 			about.setIcon(new ImageIcon(ImageIO.read(new File("images/icons/about.png"))));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		info.setPreferredSize(new Dimension(500,50));
+		stats.setFont(new Font(Eureka.getFontName(),Font.PLAIN,22));
+		stats.addActionListener(this);
+		stats.setPreferredSize(new Dimension(130,40));
 		info.add(rules);
+		info.add(stats);
 		info.add(about);
 		info.setBackground(transparent);
 		this.getContentPane().setBackground(transparent);
 		login.setPreferredSize(new Dimension(140,40));
-		login.setFont(new Font("arial",Font.PLAIN,20));
-		signin.setFont(new Font("arial",Font.PLAIN,20));
+		login.setFont(new Font(Eureka.getFontName(),Font.PLAIN,30));
+		signin.setFont(new Font(Eureka.getFontName(),Font.PLAIN,30));
 		signin.setPreferredSize(new Dimension(140,40));
 		login.addActionListener(this);
 		signin.addActionListener(this);
@@ -95,6 +101,10 @@ public class HomePage extends Fenetre implements ActionListener{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		else if (elt.getSource()==stats) {
+			dispose();
+			new Statistique();
 		}
 	}
 }

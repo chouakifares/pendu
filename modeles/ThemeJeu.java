@@ -28,7 +28,19 @@ public class ThemeJeu implements Serializable {
 		ObjectInputStream questionReader;
 		if(type==Categories.CultureGenrale) {
 			try {
-				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Culture.txt"))));
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Adulte/Culture.txt"))));
+				ArrayList questions=new ArrayList();
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				questionReader.close();
+			}catch(IOException | ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			try {
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Enfant/Culture.txt"))));
 				ArrayList questions=new ArrayList();
 				addQuestion((Question)questionReader.readObject());
 				addQuestion((Question)questionReader.readObject());
@@ -42,7 +54,19 @@ public class ThemeJeu implements Serializable {
 		}
 		else if(type==Categories.Histoire) {
 			try {
-				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/History.txt"))));
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Adulte/History.txt"))));
+				ArrayList questions=new ArrayList();
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				questionReader.close();
+			}catch(IOException | ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			try {
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Enfant/History.txt"))));
 				ArrayList questions=new ArrayList();
 				addQuestion((Question)questionReader.readObject());
 				addQuestion((Question)questionReader.readObject());
@@ -56,7 +80,19 @@ public class ThemeJeu implements Serializable {
 		}
 		else if(type==Categories.Geographie) {
 			try {
-				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Geography.txt"))));
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Adulte/Geography.txt"))));
+				ArrayList questions=new ArrayList();
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				questionReader.close();
+			}catch(IOException | ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			try {
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Enfant/Geography.txt"))));
 				ArrayList questions=new ArrayList();
 				addQuestion((Question)questionReader.readObject());
 				addQuestion((Question)questionReader.readObject());
@@ -70,7 +106,19 @@ public class ThemeJeu implements Serializable {
 		}
 		else if(type==Categories.Islam) {
 			try {
-				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Islam.txt"))));
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Adulte/Islam.txt"))));
+				ArrayList questions=new ArrayList();
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				questionReader.close();
+			}catch(IOException | ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			try {
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Enfant/Islam.txt"))));
 				ArrayList questions=new ArrayList();
 				addQuestion((Question)questionReader.readObject());
 				addQuestion((Question)questionReader.readObject());
@@ -84,7 +132,19 @@ public class ThemeJeu implements Serializable {
 		}
 		else {
 			try {
-				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Sante.txt"))));
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Adulte/Sante.txt"))));
+				ArrayList questions=new ArrayList();
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				addQuestion((Question)questionReader.readObject());
+				questionReader.close();
+			}catch(IOException | ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			try {
+				questionReader=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Questions/Enfant/Sante.txt"))));
 				ArrayList questions=new ArrayList();
 				addQuestion((Question)questionReader.readObject());
 				addQuestion((Question)questionReader.readObject());

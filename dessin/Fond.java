@@ -13,7 +13,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+//this class is used to add a background color for all our windows 
 public class Fond extends JPanel{
 	//we use this boolean to specify whether the logo will appear on the screen or not 
 	boolean logo;
@@ -28,12 +28,14 @@ public class Fond extends JPanel{
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d=(Graphics2D) g;
+		//painting the gradient
 		GradientPaint fond=new GradientPaint(0,this.getHeight()/2,new Color(76,150,215),(this.getWidth()+300)/2,(this.getHeight())/2,new Color(232,13,82));
 		g2d.setPaint(fond);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if(this.logo) {
 			try {
 				Image img=ImageIO.read(new File("images/logo.png"));
+				//we center the logo 
 				g.drawImage(img,(this.getWidth()-img.getWidth(this))/2,(this.getHeight()-img.getHeight(this))/2,this);
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.usthb.dessin;
+package com.usthb.dessin.fenetre;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.usthb.dessin.BackPanel;
+import com.usthb.dessin.Button;
+import com.usthb.dessin.Fond;
 import com.usthb.modeles.*;
 public class FenetreSelection extends Fenetre implements ActionListener{
 	private JLabel enTete=new JLabel("Choisissez une catégorie");
@@ -29,7 +33,7 @@ public class FenetreSelection extends Fenetre implements ActionListener{
 	public FenetreSelection(Player p) {
 		super("Categorie");
 		this.p=p;
-		enTete.setFont(new Font("arial",Font.PLAIN,24));
+		enTete.setFont(new Font(Eureka.getFontName(),Font.PLAIN,32));
 		enTete.setPreferredSize(new Dimension(400,40));
 		backArrow.setPreferredSize(new Dimension(400,75));
 		enTete.setHorizontalAlignment(JTextField.CENTER);
@@ -38,7 +42,7 @@ public class FenetreSelection extends Fenetre implements ActionListener{
 				b.setPreferredSize(new Dimension(177,90));
 				choicesPanel.add(b);}
 			b.addActionListener(this);
-			b.setFont(new Font("arial",Font.PLAIN,22));
+			b.setFont(new Font(Eureka.getFontName(),Font.PLAIN,26));
 		}
 		enTete.setBackground(transparent);
 		backArrow.add(enTete);
@@ -55,19 +59,19 @@ public class FenetreSelection extends Fenetre implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		dispose();
 		if(e.getSource()==choices[0]) {
-			new GameLog(Eureka.getTheme(Categories.Histoire),p);
+			new GameWindow(Eureka.getTheme(Categories.Histoire),p);
 		}
 		if(e.getSource()==choices[1]) {
-			new GameLog(Eureka.getTheme(Categories.Geographie),p);
+			new GameWindow(Eureka.getTheme(Categories.Geographie),p);
 		}
 		if(e.getSource()==choices[2]) {
-			new GameLog(Eureka.getTheme(Categories.Sante),p);
+			new GameWindow(Eureka.getTheme(Categories.Sante),p);
 		}
 		if(e.getSource()==choices[3]) {
-			new GameLog(Eureka.getTheme(Categories.Islam),p);
+			new GameWindow(Eureka.getTheme(Categories.Islam),p);
 		}
 		if(e.getSource()==choices[4]) {
-			new GameLog(Eureka.getTheme(Categories.CultureGenrale),p);
+			new GameWindow(Eureka.getTheme(Categories.CultureGenrale),p);
 		}
 	}
 	class BackButtonListener implements ActionListener {

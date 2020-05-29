@@ -1,6 +1,5 @@
-package com.usthb.dessin;
+package com.usthb.dessin.fenetre;
 import java.awt.Color;
-import com.usthb.modeles.*;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -12,12 +11,22 @@ import java.awt.event.ItemListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import com.usthb.dessin.BackPanel;
+import com.usthb.dessin.Button;
+import com.usthb.dessin.ErrorMessage;
+import com.usthb.dessin.Fond;
+import com.usthb.dessin.PasswordField;
+import com.usthb.dessin.TextField;
+import com.usthb.modeles.Adulte;
+import com.usthb.modeles.Date;
+import com.usthb.modeles.Enfant;
+import com.usthb.modeles.Eureka;
 
 public class SignIn extends Fenetre implements ActionListener,ItemListener{
 	private JComboBox day=new JComboBox();
@@ -48,7 +57,8 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 		else return (rn.getYear()-d.getYear()-1);
 	}
 	public SignIn() {
-		super(400,500,"Sign In");
+		super("Sign In");
+		this.setSize(400, 500);
 		for(int i=1;i<32;i++) {
 			day.addItem(i);
 		}
@@ -81,7 +91,7 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 		back.setPreferredSize(new Dimension(400,35));
 		back.getB().addActionListener(new BackButtonListener());
 		register.addActionListener(new RegisterButtonListener());
-		Font f=new Font("arial",Font.PLAIN,20);
+		Font f=new Font(Eureka.getFontName(),Font.PLAIN,20);
 		Dimension panelDimension=new Dimension(360,40);
 		register.setFont(f);
 		firstNameText.setFont(f);
@@ -107,7 +117,7 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 		content.add(singinContent);
 		content.add(register);
 		singinContent.setBorder(BorderFactory.createTitledBorder(null, "Sign in",
-				TitledBorder.CENTER,0,new Font("times new roman", Font.BOLD,25), 
+				TitledBorder.CENTER,0,new Font(Eureka.getFontName(), Font.BOLD,25), 
 				new Color(255,255,255)));
 		this.setContentPane(content);
 	}
@@ -132,6 +142,7 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 		//checking if the password is correct
 		if(!nom.equals("")&&!prenom.equals("")&&!username.equals("")&&passwordText.getPassword().length!=0 &&repeatPasswordText.getPassword().length!=0
 				&& !nom.equals("Last Name")&&!prenom.equals("First Name")&&!username.equals("Username")&&!psw.equals("Password")&&!repeat.equals("Repeat Password")) {
+			//control the passwords
 			if(!psw.equals(repeat)) {
 				message.setText("Les mots de passes ne correspondent pas");
 				message.setVisible(true);
@@ -142,9 +153,9 @@ public class SignIn extends Fenetre implements ActionListener,ItemListener{
 			else {
 				if(Eureka.getPlayer(username)==null) {
 					if(age(t)>=18)
-						Eureka.addPlayer(new Player(username,nom,prenom,psw,t));
+						Eureka.addPlayer(new Adulte(username,nom,prenom,psw,t));
 					else
-						Eureka.addPlayer(new Player(username,nom,prenom,psw,t));
+						Eureka.addPlayer(new Enfant(username,nom,prenom,psw,t));
 					dispose();
 					new Login();
 				}

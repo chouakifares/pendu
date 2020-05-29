@@ -1,4 +1,4 @@
-package com.usthb.dessin;
+package com.usthb.dessin.fenetre;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,7 +17,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import com.usthb.modeles.*;
+
+import com.usthb.dessin.BackPanel;
+import com.usthb.dessin.Button;
+import com.usthb.dessin.ErrorMessage;
+import com.usthb.dessin.Fond;
+import com.usthb.dessin.PasswordField;
+import com.usthb.dessin.TextField;
+import com.usthb.modeles.Eureka;
+import com.usthb.modeles.Player;
 public class Login  extends Fenetre implements ActionListener, KeyListener {
 	private BackPanel back=new BackPanel();
 	private JPanel loginContent=new JPanel();
@@ -48,7 +56,7 @@ public class Login  extends Fenetre implements ActionListener, KeyListener {
 			        submit.requestFocus();
 			    }
 		});
-		Font f=new Font("arial",Font.PLAIN,20);
+		Font f=new Font(Eureka.getFontName(),Font.PLAIN,26);
 		back.setPreferredSize(new Dimension(400,40));
 		back.getB().addActionListener(new BackButtonListener());
 		Border b=BorderFactory.createEmptyBorder(0,0,20,0);
@@ -65,7 +73,7 @@ public class Login  extends Fenetre implements ActionListener, KeyListener {
 		userPanel.setLayout(new GridLayout(1,1,10,2));
 		userPanel.add(usernameText);
 		passwordPanel.setPreferredSize(new Dimension(300,80));
-		passwordText.setFont(new Font("arial",Font.PLAIN,20));
+		passwordText.setFont(new Font(Eureka.getFontName(),Font.PLAIN,26));
 		passwordText.setForeground(Color.GRAY);
 		passwordText.setBorder(BorderFactory.createEmptyBorder(2,5,5,2));
 		passwordPanel.setLayout(new GridLayout(2,1,2,2));
@@ -77,9 +85,8 @@ public class Login  extends Fenetre implements ActionListener, KeyListener {
 		loginContent.add(passwordPanel);
 		loginContent.add(submitPanel);
 		loginContent.setBorder(BorderFactory.createTitledBorder( null,"log in",
-				TitledBorder.CENTER,0,new Font("times new roman", Font.BOLD,25), 
+				TitledBorder.CENTER,0,new Font(Eureka.getFontName(), Font.BOLD,32), 
 				new Color(255,255,255)));
-		
 		content.add(back);
 		content.add(loginContent);
 		this.setContentPane(content);

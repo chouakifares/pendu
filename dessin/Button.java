@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-
+//button customisé avec des effets lors du survol du button
 public class Button extends JButton implements MouseListener{
 	
 	private String title=null;
@@ -19,9 +19,8 @@ public class Button extends JButton implements MouseListener{
 	public Button(String title,String image) {
 		super(title);
 		this.image=image;
-		this.title=title;
+		this.title=title;	
 		this.addMouseListener(this);
-		System.out.print(this.image);
 	};
 	public Button(String title) {
 		super(title);
@@ -50,11 +49,13 @@ public class Button extends JButton implements MouseListener{
 	}
 
 	@Override
+	//lorsqu'on survole le button on mets on applique un effet d'grandissement et italique
 	public void mouseEntered(MouseEvent e) {
 		Font f=this.getFont();
 		this.setFont(new Font(f.getName(),f.ITALIC,f.getSize()+4));
 		repaint();
 	}
+	//on remet le boutton a son etat initiale apres que la souris sort du boutton 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		Font f=this.getFont();
@@ -66,15 +67,4 @@ public class Button extends JButton implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {}
-/*	public void paintComponent(Graphics g) {
-				Image img;
-				try {
-					super.paintComponent(g);
-					img = ImageIO.read(new File("logo.png"));
-					g.drawImage(img, 0, 0, this.w,this.h, this);
-					
-				} catch (IOException e) {
-					super.paintComponent(g);
-				}
-		}*/
 }

@@ -4,7 +4,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+//panel utilisé pour implementé le bouton back sur les fentres de l'app
 public class BackPanel extends JPanel{
 	private JButton b;
 	Color transparent=new Color(0,0,0,0);
